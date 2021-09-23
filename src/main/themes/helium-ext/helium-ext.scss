@@ -1,0 +1,34 @@
+@import "../helium/helium";
+
+@mixin helium-ext {
+  @include helium;
+  /* Basic styles for stepper inner text box */
+  .stepper {
+    input[type="text"] {
+      @include box-defaults;
+      @include valo-textfield-style;
+      @include he-input-style;
+    }
+
+    &.v-readonly input[type="text"] {
+      @include he-input-readonly-style();
+    }
+
+    &.v-disabled input[type="text"] {
+      @include he-input-disabled-style();
+    }
+
+    &.stepper-error,
+    &.stepper-error-error {
+      input[type="text"] {
+        @include he-input-error-style();
+      }
+    }
+
+    .stepper-updown {
+      $padding: ceil($v-unit-size / 5);
+      top: $padding !important;
+      right: $padding !important;
+    }
+  }
+}
